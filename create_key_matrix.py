@@ -86,14 +86,14 @@ if __name__ == "__main__":
         if 'EESchema Schematic File' in firstLine:
             print('Found a KiCad schematic file!')
             #loop through lines and coppy to buffer so we can make a backup of the original file later
-            buffPath = os.path.dirname(args.output.name)+'\\temp.buf'
+            buffPath = os.path.join(os.path.dirname(args.output.name), 'temp.buf')
             buff = open(buffPath, 'w')
             print('Creating {}x{} matrix... in {}'.format(args.numRows, args.numCols,args.output.name))
             #create a little visual representation of the matrix
             for r in range(args.numRows):
                 k = ""
                 for c in range(args.numCols):
-                    k+=chr(254)+" "
+                    k += "o "
                 print(k)
             #write the matrix to the eeschema file
             for line in args.output:
